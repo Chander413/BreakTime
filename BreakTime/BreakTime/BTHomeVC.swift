@@ -81,24 +81,50 @@ class BTHomeVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
             selectedGame = sectionOutdoor[indexPath.row]
         }
         
-    showAlertView( title: "\(selectedGame)", controller: self)
+        showAlertView( title: "\(selectedGame)", controller: self)
     }
     
     
     func showAlertView( title: String , controller : UIViewController)->Void {
         
-    let alertController = UIAlertController(title: title, message:
-        "", preferredStyle: UIAlertControllerStyle.alert)
-    for i in ["Create Team", "Join Team", "Cancel"] {
-        alertController.addAction(UIAlertAction(title: i, style: .default, handler: doSomething))
-    }
-    alertController.view.tintColor = .black
-    
-    controller.present(alertController, animated: true, completion: nil)
+        let alertController = UIAlertController(title: title, message:
+            "", preferredStyle: UIAlertControllerStyle.alert)
+//        for i in ["Create Team", "Join Team", "Cancel"] {
+//            alertController.addAction(UIAlertAction(title: i, style: .default, handler: doSomething))
+//        }
+        
+        // Create the actions
+        let createAction = UIAlertAction(title: "Create Team", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            NSLog("Create Pressed")
+            
+            let storyBoard = UIStoryboard(name: "Cricket", bundle: nil)
+            let cricketVC = storyBoard.instantiateViewController(withIdentifier: "CreateTeamVC") as! CreateTeamVC
+            self.navigationController?.pushViewController(cricketVC, animated: true)
+        }
+        let joinAction = UIAlertAction(title: "Join Team", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            NSLog("Join Pressed")
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {
+            UIAlertAction in
+            NSLog("Cancel Pressed")
+        }
+        
+        // Add the actions
+        alertController.addAction(createAction)
+        alertController.addAction(joinAction)
+        alertController.addAction(cancelAction)
+        
+        alertController.view.tintColor = .black
+        
+        controller.present(alertController, animated: true, completion: nil)
     }
     
     func doSomething(action: UIAlertAction) {
         //Use action.title
+        
     }
     
     override func didReceiveMemoryWarning() {

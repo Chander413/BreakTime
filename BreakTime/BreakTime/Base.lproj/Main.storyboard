@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BreakTime" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="BreakTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -37,7 +37,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7g-54-D5z">
                                         <rect key="frame" x="34" y="113" width="274" height="1"/>
@@ -63,6 +63,9 @@
                                         <state key="normal" title="Login">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gyV-Wa-uaH"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login with your Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xet-Fo-4P4">
                                         <rect key="frame" x="53" y="47" width="237" height="21"/>
@@ -78,6 +81,9 @@
                                         <state key="normal" title="Forgot password?">
                                             <color key="titleColor" red="0.40464618802070618" green="0.65800219774246216" blue="0.9114719033241272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="forgotPasswordTF:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lkl-wH-0in"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -98,20 +104,27 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
                                 <state key="normal" title="Register"/>
+                                <connections>
+                                    <action selector="registerButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JRB-Cb-RVO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="1Kq-av-TWh"/>
+                    <connections>
+                        <outlet property="emailTF" destination="c3Y-5H-qpt" id="MQv-ps-qUD"/>
+                        <outlet property="passwordTF" destination="IfM-0u-xe2" id="987-ZP-EA8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="989.60000000000002" y="714.69265367316348"/>
         </scene>
-        <!--View Controller-->
+        <!--SignUPVC-->
         <scene sceneID="xOU-ZX-fqY">
             <objects>
-                <viewController id="1Aw-aZ-J6Z" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signUPVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1Aw-aZ-J6Z" customClass="BTSignUPVC" customModule="BreakTime" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qaV-EL-XpC"/>
                         <viewControllerLayoutGuide type="bottom" id="haF-XN-xAj"/>
@@ -177,6 +190,9 @@
                                         <state key="normal" title="Register">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="registerButtonAction:" destination="1Aw-aZ-J6Z" eventType="touchUpInside" id="8Jn-eq-6FC"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmT-8i-Fzz">
                                         <rect key="frame" x="53" y="24" width="237" height="21"/>
@@ -214,6 +230,9 @@
                                         <state key="normal" title="&lt; Back">
                                             <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backButtonAction:" destination="1Aw-aZ-J6Z" eventType="touchUpInside" id="0c0-q9-4am"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.97170525789260864" green="0.045604012906551361" blue="0.23216712474822998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -221,10 +240,16 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTF" destination="4uO-cb-lVF" id="Tc9-7P-vLf"/>
+                        <outlet property="fullNameTF" destination="wqj-Tz-4CP" id="iUh-Y9-xdu"/>
+                        <outlet property="mobileNumberTF" destination="ISl-ih-WU9" id="6Pp-Pb-nlC"/>
+                        <outlet property="passwordTF" destination="9p1-SR-O2h" id="lr8-Py-HDn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZiC-j0-VtK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1624.8" y="714.69265367316348"/>
+            <point key="canvasLocation" x="1822" y="715"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sVK-oH-zc3">
