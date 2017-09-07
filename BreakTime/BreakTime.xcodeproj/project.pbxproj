@@ -12,6 +12,7 @@
 		184373481F61237B00A1B383 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184373461F61237B00A1B383 /* Main.storyboard */; };
 		1843734A1F61237B00A1B383 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184373491F61237B00A1B383 /* Assets.xcassets */; };
 		1843734D1F61237B00A1B383 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1843734B1F61237B00A1B383 /* LaunchScreen.storyboard */; };
+		189AEE981F61565A0014B33E /* BTSignUPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189AEE971F61565A0014B33E /* BTSignUPVC.swift */; };
 		18F14C501F6129EE00CA7B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F14C4F1F6129EE00CA7B64 /* GoogleService-Info.plist */; };
 		451297131F613CB20052F7BB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 451297121F613CB20052F7BB /* Home.storyboard */; };
 		451297151F613CED0052F7BB /* BTHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451297141F613CED0052F7BB /* BTHomeVC.swift */; };
@@ -26,6 +27,7 @@
 		184373491F61237B00A1B383 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1843734C1F61237B00A1B383 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1843734E1F61237B00A1B383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		189AEE971F61565A0014B33E /* BTSignUPVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTSignUPVC.swift; sourceTree = "<group>"; };
 		18F14C4F1F6129EE00CA7B64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		451297121F613CB20052F7BB /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		451297141F613CED0052F7BB /* BTHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BTHomeVC.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			children = (
 				184373421F61237B00A1B383 /* AppDelegate.swift */,
 				184373441F61237B00A1B383 /* ViewController.swift */,
+				189AEE971F61565A0014B33E /* BTSignUPVC.swift */,
 				451297141F613CED0052F7BB /* BTHomeVC.swift */,
 				184373461F61237B00A1B383 /* Main.storyboard */,
 				451297121F613CB20052F7BB /* Home.storyboard */,
@@ -223,7 +226,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -233,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				189AEE981F61565A0014B33E /* BTSignUPVC.swift in Sources */,
 				184373451F61237B00A1B383 /* ViewController.swift in Sources */,
 				451297151F613CED0052F7BB /* BTHomeVC.swift in Sources */,
 				184373431F61237B00A1B383 /* AppDelegate.swift in Sources */,
