@@ -4,4 +4,5 @@ use_frameworks!
 
 target ‘BreakTime’ do
     pod 'Firebase/Core'
+    pod 'IQKeyboardManagerSwift'
 end
