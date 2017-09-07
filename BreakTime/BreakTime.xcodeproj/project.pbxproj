@@ -16,6 +16,10 @@
 		18F14C501F6129EE00CA7B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F14C4F1F6129EE00CA7B64 /* GoogleService-Info.plist */; };
 		451297131F613CB20052F7BB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 451297121F613CB20052F7BB /* Home.storyboard */; };
 		451297151F613CED0052F7BB /* BTHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451297141F613CED0052F7BB /* BTHomeVC.swift */; };
+		EBD9AF6B1F615C01008D0F79 /* Cricket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBD9AF6A1F615C01008D0F79 /* Cricket.storyboard */; };
+		EBD9AF6D1F6168ED008D0F79 /* CreateTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD9AF6C1F6168ED008D0F79 /* CreateTeamVC.swift */; };
+		EBD9AF6F1F616918008D0F79 /* JoinTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD9AF6E1F616918008D0F79 /* JoinTeamVC.swift */; };
+		EBD9AF711F616E60008D0F79 /* TeamList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD9AF701F616E60008D0F79 /* TeamList.swift */; };
 		FA7456EFA7AE26DED32F9E4A /* Pods_BreakTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F4D35DA5E8332DE2E71146 /* Pods_BreakTime.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +38,10 @@
 		54884FAF236D1AB1FF75564B /* Pods-BreakTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreakTime.release.xcconfig"; path = "Pods/Target Support Files/Pods-BreakTime/Pods-BreakTime.release.xcconfig"; sourceTree = "<group>"; };
 		96F4D35DA5E8332DE2E71146 /* Pods_BreakTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreakTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD9886D643395EBB241E22E /* Pods-BreakTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreakTime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BreakTime/Pods-BreakTime.debug.xcconfig"; sourceTree = "<group>"; };
+		EBD9AF6A1F615C01008D0F79 /* Cricket.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cricket.storyboard; sourceTree = "<group>"; };
+		EBD9AF6C1F6168ED008D0F79 /* CreateTeamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamVC.swift; sourceTree = "<group>"; };
+		EBD9AF6E1F616918008D0F79 /* JoinTeamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinTeamVC.swift; sourceTree = "<group>"; };
+		EBD9AF701F616E60008D0F79 /* TeamList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +90,10 @@
 				184373441F61237B00A1B383 /* ViewController.swift */,
 				189AEE971F61565A0014B33E /* BTSignUPVC.swift */,
 				451297141F613CED0052F7BB /* BTHomeVC.swift */,
+				EBD9AF6C1F6168ED008D0F79 /* CreateTeamVC.swift */,
+				EBD9AF6E1F616918008D0F79 /* JoinTeamVC.swift */,
+				EBD9AF701F616E60008D0F79 /* TeamList.swift */,
+				EBD9AF6A1F615C01008D0F79 /* Cricket.storyboard */,
 				184373461F61237B00A1B383 /* Main.storyboard */,
 				451297121F613CB20052F7BB /* Home.storyboard */,
 				184373491F61237B00A1B383 /* Assets.xcassets */,
@@ -167,6 +179,7 @@
 				451297131F613CB20052F7BB /* Home.storyboard in Resources */,
 				18F14C501F6129EE00CA7B64 /* GoogleService-Info.plist in Resources */,
 				1843734A1F61237B00A1B383 /* Assets.xcassets in Resources */,
+				EBD9AF6B1F615C01008D0F79 /* Cricket.storyboard in Resources */,
 				184373481F61237B00A1B383 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,6 +252,9 @@
 				189AEE981F61565A0014B33E /* BTSignUPVC.swift in Sources */,
 				184373451F61237B00A1B383 /* ViewController.swift in Sources */,
 				451297151F613CED0052F7BB /* BTHomeVC.swift in Sources */,
+				EBD9AF6F1F616918008D0F79 /* JoinTeamVC.swift in Sources */,
+				EBD9AF711F616E60008D0F79 /* TeamList.swift in Sources */,
+				EBD9AF6D1F6168ED008D0F79 /* CreateTeamVC.swift in Sources */,
 				184373431F61237B00A1B383 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
