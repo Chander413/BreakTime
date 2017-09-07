@@ -18,6 +18,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if Auth.auth().currentUser != nil{
+            gotoHomeScreen()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,9 +57,7 @@ class ViewController: UIViewController {
                         }
                     }
                     
-                    let storyBoard = UIStoryboard(name: "Home", bundle: nil)
-                    let homeVC = storyBoard.instantiateInitialViewController() as! BTHomeVC
-                    self.navigationController?.pushViewController(homeVC, animated: true)
+                    self.gotoHomeScreen()
                 }
             }
         }
@@ -73,7 +74,22 @@ class ViewController: UIViewController {
         }
     
     }
-
+    
+    func gotoHomeScreen() {
+        let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+        let homeVC = storyBoard.instantiateInitialViewController() as! BTHomeVC
+        self.navigationController?.pushViewController(homeVC, animated: true)
+    }
+    
+    func signOut() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
+    
     @IBAction func forgotPasswordTF(_ sender: Any) {
     
     }
