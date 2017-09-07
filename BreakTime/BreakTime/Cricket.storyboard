@@ -32,6 +32,17 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rin-MR-bEy">
+                                        <rect key="frame" x="8" y="26" width="61" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="&lt; Back">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonAction:" destination="aaj-eY-F0P" eventType="touchUpInside" id="KyK-Dv-ar8"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.97170525789260864" green="0.045604012906551361" blue="0.23216712474822998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -155,7 +166,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eW7-vd-ZgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1175.2" y="126.38680659670166"/>
+            <point key="canvasLocation" x="1010" y="100"/>
         </scene>
         <!--Team List-->
         <scene sceneID="bN4-qY-C5N">
@@ -256,7 +267,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hyr-oh-cf0" id="LuG-ba-WMd">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kI-r0-XY1">
@@ -333,6 +344,17 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jXU-St-oWQ">
+                                        <rect key="frame" x="8" y="26" width="61" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="&lt; Back">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonAction:" destination="1Im-Qx-fGx" eventType="touchUpInside" id="QU7-NI-z12"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.97170525789260864" green="0.045604012906551361" blue="0.23216712474822998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -387,7 +409,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ox6-5v-X3b" id="Dl3-in-MSX">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="64"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="63.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="In Progress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="445-na-cVc">

@@ -105,6 +105,10 @@ class BTHomeVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         let joinAction = UIAlertAction(title: "Join Team", style: UIAlertActionStyle.default) {
             UIAlertAction in
             NSLog("Join Pressed")
+            
+            let storyBoard = UIStoryboard(name: "Cricket", bundle: nil)
+            let cricketVC = storyBoard.instantiateViewController(withIdentifier: "JoinTeamVC") as! JoinTeamVC
+            self.navigationController?.pushViewController(cricketVC, animated: true)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) {

@@ -20,7 +20,10 @@ class JoinTeamVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    @IBAction func backButtonAction(_ sender: Any) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
 
     /*
     // MARK: - Navigation
