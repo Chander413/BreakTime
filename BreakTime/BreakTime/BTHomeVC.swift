@@ -12,9 +12,9 @@ import UIKit
 class BTHomeVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
-    var sectionHeadingsArray : [String] = ["Indoor", "Outdoor"]
-    var sectionIndoor : [String] = ["Carroms", "Chess", "Snakes & Laders"]
-    var sectionOutdoor : [String] = ["Cricket"]
+    var sectionHeadingsArray : [String] = ["Outdoor Games", "Indoor Games"]
+    var sectionIndoor : [String] = ["Carroms", "Chess", "Snakes & Laders","Asta-Chemma"]
+    var sectionOutdoor : [String] = ["Cricket","Volley Ball","Foot Ball","Badminton"]
     var selectedGame : String = ""
 
     override func viewDidLoad() {
@@ -30,9 +30,9 @@ class BTHomeVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return sectionIndoor.count
-        } else {
             return sectionOutdoor.count
+        } else {
+            return sectionIndoor.count
         }
     }
     
@@ -40,24 +40,23 @@ class BTHomeVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
         return 2;
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        let headerTitle = sectionHeadingsArray[section]
-//        return headerTitle.uppercased()
-//    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 40
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let viewHeader = UIView()
-        viewHeader.backgroundColor = UIColor.lightGray
+        viewHeader.backgroundColor = UIColor.red
+        //        viewHeader.layer.opacity = 0.5
         
         let headerTitle = UILabel()
-        headerTitle.frame = CGRect(x: 0 , y: 15, width: tableView.frame.width, height: 21)
+        headerTitle.frame = CGRect(x: 15 , y: 3, width: tableView.frame.width, height: 30)
         let title = sectionHeadingsArray[section]
-        headerTitle.text = title.uppercased()
-        headerTitle.textAlignment = .center
+        headerTitle.text = title.capitalized
+        headerTitle.textAlignment = .left
+        headerTitle.font = UIFont(name: "Gill Sans - Regular", size: 17)
+        headerTitle.textColor = UIColor.white
         viewHeader.addSubview(headerTitle)
         return viewHeader
     }
@@ -65,9 +64,9 @@ class BTHomeVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
         if indexPath.section == 0 {
-            cell.textLabel?.text = sectionIndoor[indexPath.row]
-        } else {
             cell.textLabel?.text = sectionOutdoor[indexPath.row]
+        } else {
+            cell.textLabel?.text = sectionIndoor[indexPath.row]
         }
         cell.selectionStyle = .none
       return cell
@@ -76,9 +75,9 @@ class BTHomeVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 0 {
-            selectedGame = sectionIndoor[indexPath.row]
-        } else {
             selectedGame = sectionOutdoor[indexPath.row]
+        } else {
+            selectedGame = sectionIndoor[indexPath.row]
         }
         
         showAlertView( title: "\(selectedGame)", controller: self)
@@ -100,6 +99,7 @@ class BTHomeVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
             
             let storyBoard = UIStoryboard(name: "Cricket", bundle: nil)
             let cricketVC = storyBoard.instantiateViewController(withIdentifier: "CreateTeamVC") as! CreateTeamVC
+            cricketVC.gameTitleString = self.selectedGame
             self.navigationController?.pushViewController(cricketVC, animated: true)
         }
         let joinAction = UIAlertAction(title: "Join Team", style: UIAlertActionStyle.default) {
@@ -108,6 +108,8 @@ class BTHomeVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
             
             let storyBoard = UIStoryboard(name: "Cricket", bundle: nil)
             let cricketVC = storyBoard.instantiateViewController(withIdentifier: "JoinTeamVC") as! JoinTeamVC
+            cricketVC.gameTitleString = self.selectedGame
+    
             self.navigationController?.pushViewController(cricketVC, animated: true)
         }
         

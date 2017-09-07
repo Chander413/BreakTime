@@ -19,10 +19,13 @@ class CreateTeamVC: UIViewController {
     @IBOutlet weak var teamSize: UITextField!
     @IBOutlet weak var createTeamButton: UIButton!
     
+    var gameTitleString: String = ""
+    
     var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        gameTitle.text = gameTitleString
         ref = Database.database().reference()
         // Do any additional setup after loading the view.
     }

@@ -10,9 +10,12 @@ import UIKit
 
 class JoinTeamVC: UIViewController {
 
+    @IBOutlet weak var gameTitle: UILabel!
+    var gameTitleString: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        gameTitle.text = gameTitleString
         // Do any additional setup after loading the view.
     }
 
