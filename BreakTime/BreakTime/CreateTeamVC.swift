@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class CreateTeamVC: UIViewController {
 
@@ -17,11 +19,11 @@ class CreateTeamVC: UIViewController {
     @IBOutlet weak var teamSize: UITextField!
     @IBOutlet weak var createTeamButton: UIButton!
     
-    
+    var ref: DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ref = Database.database().reference()
         // Do any additional setup after loading the view.
     }
 
@@ -33,12 +35,24 @@ class CreateTeamVC: UIViewController {
     @IBAction func creatTeamAction(_ sender: Any) {
         if teamSize.text != "" && teamName.text != "" {
             
+            let defaults = UserDefaults.standard
+            let details = defaults.value(forKey: "userDetails") as! Dictionary<String, String>
+            let userName = details["userName"]!
+            let mobileNumber = details["mobileNumber"]!
+            let dataDict : [String : Any] = ["gameTitle" : gameTitle.text!, "teamName" : teamName.text!, "teamSize" : teamSize.text!, "creatorName" : userName, "location" : "Madhapur", "time" : "12:00 PM", "teamMembers" : [["name" : userName, "mobile" : mobileNumber]]]
+            
+            let user = Auth.auth().currentUser
+            
+            let formDataRef = ref.child("CreateTeam")
+            formDataRef.child((user?.uid)!).setValue(dataDict)
+            
             let storyBoard = UIStoryboard.init(name: "Cricket", bundle: nil)
             let vc = storyBoard.instantiateViewController(withIdentifier: "TeamListID") as! TeamList
             vc.isCreater = true
             vc.gameName = gameTitle.text!
             vc.teamName = teamName.text!
             vc.teamSize = Int(teamSize.text!)!
+
             
             self.navigationController?.pushViewController(vc, animated: true)
         }

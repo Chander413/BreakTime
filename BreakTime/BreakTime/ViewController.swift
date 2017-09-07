@@ -19,7 +19,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         if Auth.auth().currentUser != nil{
-            gotoHomeScreen()
+            let user = Auth.auth().currentUser
+            let storageRef = Storage.storage().reference().child("userDetails").child(user!.uid)
+            
+            // Download in memory with a maximum allowed size of 1MB (1 * 1024 * 1024 bytes)
+            storageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+                if data != nil{
+                    // Uh-oh, an error occurred!
+                    var dictionary: Dictionary? = NSKeyedUnarchiver.unarchiveObject(with: data!) as? [String : Any]
+                    print(dictionary as Any)
+                    dictionary?["email"] = user?.email
+                    let defaults : UserDefaults = UserDefaults.standard
+                    defaults.set(dictionary, forKey: "userDetails")
+                    defaults.synchronize()
+                } else {
+                    // Data for "images/island.jpg" is returned
+                }
+            }
+            gotoHomeScreen(withNavigation: false)
         }
     }
 
@@ -49,15 +66,18 @@ class ViewController: UIViewController {
                     storageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
                         if data != nil{
                             // Uh-oh, an error occurred!
-                            let dictionary: Dictionary? = NSKeyedUnarchiver.unarchiveObject(with: data!) as? [String : Any]
+                            var dictionary: Dictionary? = NSKeyedUnarchiver.unarchiveObject(with: data!) as? [String : Any]
                             print(dictionary as Any)
-                            
+                            dictionary?["email"] = user?.email
+                            let defaults : UserDefaults = UserDefaults.standard
+                            defaults.set(dictionary, forKey: "userDetails")
+                            defaults.synchronize()
                         } else {
                             // Data for "images/island.jpg" is returned
                         }
                     }
                     
-                    self.gotoHomeScreen()
+                    self.gotoHomeScreen(withNavigation: true)
                 }
             }
         }
@@ -75,10 +95,10 @@ class ViewController: UIViewController {
     
     }
     
-    func gotoHomeScreen() {
+    func gotoHomeScreen(withNavigation navigation:Bool) {
         let storyBoard = UIStoryboard(name: "Home", bundle: nil)
         let homeVC = storyBoard.instantiateInitialViewController() as! BTHomeVC
-        self.navigationController?.pushViewController(homeVC, animated: true)
+        self.navigationController?.pushViewController(homeVC, animated: navigation)
     }
     
     func signOut() {

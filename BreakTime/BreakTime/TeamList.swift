@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 
 class TeamList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -24,7 +26,7 @@ class TeamList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getAllTeamMembers()
         gameTitle.text = gameName
         teamNameLabel.text = teamName
         teamSizeCount.text = "\(joinedMembers)/\(teamSize)"
@@ -47,15 +49,30 @@ class TeamList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func getAllTeamMembers() {
+        let ref: DatabaseReference = Database.database().reference()
+        ref.child("CreateTeam").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            
+            //            let messages = value?.allValues.filter({ (messageDict) -> Bool in
+            //                return true
+            //            })
+            if (value?.allKeys.count)! > 0{
+                print(value as Any)
+                let user = Auth.auth().currentUser
+                var data : [String : Any] = Dictionary()
+                if value?[user?.uid as Any] != nil{
+                   data = value?.value(forKey: (user?.uid)!) as! [String : Any]
+                }
+            }
+            //self.tableView.reloadData()
+            
+            // ...
+        }) { (error) in
+            print(error.localizedDescription)
+        }
     }
-    */
 
 }
 class usersCell: UITableViewCell {
