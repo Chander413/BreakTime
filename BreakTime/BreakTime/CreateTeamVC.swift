@@ -9,8 +9,10 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import CoreLocation
+import MapKit
 
-class CreateTeamVC: UIViewController {
+class CreateTeamVC: UIViewController,CLLocationManagerDelegate  {
 
     @IBOutlet weak var gameTitle: UILabel!
     @IBOutlet weak var location: UILabel!
@@ -22,14 +24,36 @@ class CreateTeamVC: UIViewController {
     var gameTitleString: String = ""
     
     var ref: DatabaseReference!
-    
+     var locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         gameTitle.text = gameTitleString
         ref = Database.database().reference()
+        
         // Do any additional setup after loading the view.
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        updateLocation()
+    }
+    func updateLocation() {
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+            locationManager.delegate=self;
+            locationManager.desiredAccuracy=kCLLocationAccuracyBest;
+            locationManager.distanceFilter=kCLDistanceFilterNone;
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startMonitoringSignificantLocationChanges()
+            locationManager.startUpdatingLocation()
+            var geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(locationManager.location!, completionHandler: {(placemarks, error)->Void in
+            self.location.text = placemarks?[0].description
+        })
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
