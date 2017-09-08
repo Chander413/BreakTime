@@ -18,6 +18,8 @@ class JoinTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var time: UILabel!
+    
     var gameTitleString: String = ""
     var locationManager = CLLocationManager()
     
@@ -31,6 +33,13 @@ class JoinTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         gameTitle.text = gameTitleString
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm a"
+        let result = formatter.string(from: date)
+        time.text = result
+        //print("Time is \(result)")
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {

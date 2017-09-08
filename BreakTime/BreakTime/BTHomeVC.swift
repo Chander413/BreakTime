@@ -25,7 +25,7 @@ class BTHomeVC: BaseViewController , UITableViewDelegate, UITableViewDataSource 
         let fView = UIView()
         tableView.tableFooterView = fView
         selectedArray = sectionOutdoor
-        outdoorGamesButton.backgroundColor = UIColor.red
+        outdoorGamesButton.backgroundColor = UIColor.init(red: 248/255, green: 12/255, blue: 59/255, alpha: 1.0)
         indoorGamesButton.backgroundColor = UIColor.lightGray
         
 
@@ -34,13 +34,13 @@ class BTHomeVC: BaseViewController , UITableViewDelegate, UITableViewDataSource 
     
     @IBAction func outdoorOrIndoorSelected(_ sender: Any) {
         if (sender as! UIButton).tag == 1 {
-            outdoorGamesButton.backgroundColor = UIColor.red
+            outdoorGamesButton.backgroundColor = UIColor.init(red: 248/255, green: 12/255, blue: 59/255, alpha: 1.0)
             indoorGamesButton.backgroundColor = UIColor.lightGray
             selectedArray = sectionOutdoor
             tableView.reloadData()
         } else {
             outdoorGamesButton.backgroundColor = UIColor.lightGray
-            indoorGamesButton.backgroundColor = UIColor.red
+            indoorGamesButton.backgroundColor = UIColor.init(red: 248/255, green: 12/255, blue: 59/255, alpha: 1.0)
             selectedArray = sectionIndoor
             tableView.reloadData()
         }
@@ -117,6 +117,10 @@ class BTHomeVC: BaseViewController , UITableViewDelegate, UITableViewDataSource 
     
     func doSomething(action: UIAlertAction) {
         //Use action.title
+        
+    }
+    @IBAction func myTeamAction(_ sender: Any) {
+        
         
     }
     

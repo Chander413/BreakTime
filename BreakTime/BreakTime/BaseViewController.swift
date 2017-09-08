@@ -18,7 +18,7 @@ class BaseViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let button1 = UIButton()
-        button1.frame = CGRect(x : self.view.frame.size.width - 50, y : 23, width : 30, height : 30)
+        button1.frame = CGRect(x : 20, y : 26, width : 25, height : 30)
         button1.addTarget(self, action: #selector(menuAction), for: .touchUpInside)
         button1.setImage(#imageLiteral(resourceName: "logout"), for: .normal)
         self.view.addSubview(button1)

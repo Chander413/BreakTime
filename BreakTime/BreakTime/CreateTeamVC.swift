@@ -28,6 +28,12 @@ class CreateTeamVC: UIViewController,CLLocationManagerDelegate  {
      var locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm a"
+        let result = formatter.string(from: date)
+        time.text = result
+        //print("Time is \(result)")
         gameTitle.text = gameTitleString
         ref = Database.database().reference()
         
