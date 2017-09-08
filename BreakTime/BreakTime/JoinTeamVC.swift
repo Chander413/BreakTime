@@ -45,6 +45,7 @@ class JoinTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     override func viewWillAppear(_ animated: Bool) {
         updateLocation()
         getTeamsList()
+        userJoined = false
     }
     
     func updateLocation() {

@@ -23,6 +23,8 @@ class TeamList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var teamSizeCount: UILabel!
     @IBOutlet weak var usersTableView: UITableView!
+    @IBOutlet weak var locationLBL: UILabel!
+    @IBOutlet weak var timeLBL: UILabel!
     
     
     override func viewDidLoad() {
@@ -36,6 +38,7 @@ class TeamList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillAppear(_ animated: Bool) {
         getSelectedTeamDetails()
+        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,6 +71,8 @@ class TeamList: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     data = value?.value(forKey: self.selUid) as! [String : Any]
                     self.gameTitle.text = data["gameTitle"] as? String
                     self.teamNameLabel.text = data["teamName"] as? String
+                    self.timeLBL.text = data["time"] as? String
+                    self.locationLBL.text = data["location"] as? String
                     if data["teamMembers"] != nil {
                         let teamMembers = data["teamMembers"] as! [[String : String]]
                         self.users = teamMembers

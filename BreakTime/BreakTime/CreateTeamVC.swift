@@ -75,7 +75,7 @@ class CreateTeamVC: UIViewController,CLLocationManagerDelegate  {
             let details = defaults.value(forKey: "userDetails") as! Dictionary<String, String>
             let userName = details["userName"]!
             let mobileNumber = details["mobileNumber"]!
-            let dataDict : [String : Any] = ["gameTitle" : gameTitle.text!, "teamName" : teamName.text!, "teamSize" : teamSize.text!, "creatorName" : userName, "location" : location.text!, "time" : "12:00 PM", "teamMembers" : [["name" : userName, "mobile" : mobileNumber]]]
+            let dataDict : [String : Any] = ["gameTitle" : gameTitle.text!, "teamName" : teamName.text!, "teamSize" : teamSize.text!, "creatorName" : userName, "location" : location.text!, "time" : time.text!, "teamMembers" : [["name" : userName, "mobile" : mobileNumber]]]
             
             let formDataRef = ref.child("CreateTeam")
             //formDataRef.childByAutoId().setValue(dataDict)
