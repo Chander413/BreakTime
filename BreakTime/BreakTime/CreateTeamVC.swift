@@ -68,20 +68,23 @@ class CreateTeamVC: UIViewController,CLLocationManagerDelegate  {
             let mobileNumber = details["mobileNumber"]!
             let dataDict : [String : Any] = ["gameTitle" : gameTitle.text!, "teamName" : teamName.text!, "teamSize" : teamSize.text!, "creatorName" : userName, "location" : "Madhapur", "time" : "12:00 PM", "teamMembers" : [["name" : userName, "mobile" : mobileNumber]]]
             
-            let user = Auth.auth().currentUser
-            
             let formDataRef = ref.child("CreateTeam")
-            formDataRef.child((user?.uid)!).setValue(dataDict)
-            
-            let storyBoard = UIStoryboard.init(name: "Cricket", bundle: nil)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "TeamListID") as! TeamList
-            vc.isCreater = true
-            vc.gameName = gameTitle.text!
-            vc.teamName = teamName.text!
-            vc.teamSize = Int(teamSize.text!)!
-
-            
-            self.navigationController?.pushViewController(vc, animated: true)
+            //formDataRef.childByAutoId().setValue(dataDict)
+            formDataRef.childByAutoId().setValue(dataDict, withCompletionBlock: { (error, result) in
+                print("finished saving")
+                if let error = error {
+                    print(error.localizedDescription)
+                }else{
+                    let storyBoard = UIStoryboard.init(name: "Cricket", bundle: nil)
+                    let vc = storyBoard.instantiateViewController(withIdentifier: "TeamListID") as! TeamList
+                    vc.isCreater = true
+                    vc.selUid = result.key
+                    vc.gameName = self.gameTitle.text!
+                    vc.teamName = self.teamName.text!
+                    vc.teamSize = Int(self.teamSize.text!)!                    
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            })
         }
         
        
