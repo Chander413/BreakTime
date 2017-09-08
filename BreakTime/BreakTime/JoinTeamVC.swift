@@ -25,6 +25,9 @@ class JoinTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var teamArray : [[String : Any]] = Array()
     var keysArray : [String] = Array()
    
+    var userJoined = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         gameTitle.text = gameTitleString
@@ -90,10 +93,24 @@ class JoinTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if userNumbers.contains(mobileNumber){
             cell.joinButton.setTitle("Joined", for: .normal)
             cell.joinButton.isUserInteractionEnabled = false
+            cell.joinButton.alpha = 0.5
+            userJoined = true
         }
         else{
             cell.joinButton.setTitle("Join", for: .normal)
-            cell.joinButton.isUserInteractionEnabled = true
+            if userJoined {
+                cell.joinButton.isUserInteractionEnabled = false
+                cell.joinButton.alpha = 0.5
+            }
+            else{
+                cell.joinButton.alpha = 1.0
+                cell.joinButton.isUserInteractionEnabled = true
+            }
+        }
+        
+        if teamMembers.count >= Int(team["teamSize"] as! String)! {
+            cell.joinButton.isUserInteractionEnabled = false
+            cell.joinButton.alpha = 0.5
         }
         
         return cell
@@ -138,7 +155,10 @@ class JoinTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     @IBAction func joinClicked(_ sender: UIButton) {
         let team = teamArray[sender.tag]
-        var teamMembers = team["teamMembers"] as! [[String : String]]
+        var teamMembers : [[String : String]] = Array()
+        if team["teamMembers"] != nil {
+            teamMembers = team["teamMembers"] as! [[String : String]]
+        }
         let defaults = UserDefaults.standard
         let details = defaults.value(forKey: "userDetails") as! Dictionary<String, String>
         let userName = details["userName"]!
