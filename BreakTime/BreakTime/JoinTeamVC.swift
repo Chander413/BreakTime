@@ -9,11 +9,17 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseAuth
+import CoreLocation
+import MapKit
 
-class JoinTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class JoinTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
     @IBOutlet weak var gameTitle: UILabel!
+    @IBOutlet weak var location: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var gameTitleString: String = ""
+    var locationManager = CLLocationManager()
     
     @IBOutlet var tableView: UITableView!
     var teamArray : [[String : Any]] = Array()
@@ -23,6 +29,28 @@ class JoinTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         getTeamsList()
         gameTitle.text = gameTitleString
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        updateLocation()
+    }
+    func updateLocation() {
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        locationManager.delegate=self;
+        locationManager.desiredAccuracy=kCLLocationAccuracyBest;
+        locationManager.distanceFilter=kCLDistanceFilterNone;
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startMonitoringSignificantLocationChanges()
+        locationManager.startUpdatingLocation()
+        var geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(locationManager.location!, completionHandler: {(placemarks, error)->Void in
+            self.activityIndicator.stopAnimating()
+            self.location.text = placemarks?[0].description
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {

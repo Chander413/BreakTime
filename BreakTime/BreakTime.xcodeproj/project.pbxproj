@@ -16,6 +16,8 @@
 		18F14C501F6129EE00CA7B64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18F14C4F1F6129EE00CA7B64 /* GoogleService-Info.plist */; };
 		451297131F613CB20052F7BB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 451297121F613CB20052F7BB /* Home.storyboard */; };
 		451297151F613CED0052F7BB /* BTHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 451297141F613CED0052F7BB /* BTHomeVC.swift */; };
+		EB2B82241F625B260074EB54 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2B82231F625B260074EB54 /* CoreLocation.framework */; };
+		EBBE9E791F629D34002C0B21 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBE9E781F629D34002C0B21 /* BaseViewController.swift */; };
 		EBD9AF6B1F615C01008D0F79 /* Cricket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBD9AF6A1F615C01008D0F79 /* Cricket.storyboard */; };
 		EBD9AF6D1F6168ED008D0F79 /* CreateTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD9AF6C1F6168ED008D0F79 /* CreateTeamVC.swift */; };
 		EBD9AF6F1F616918008D0F79 /* JoinTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD9AF6E1F616918008D0F79 /* JoinTeamVC.swift */; };
@@ -38,6 +40,9 @@
 		54884FAF236D1AB1FF75564B /* Pods-BreakTime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreakTime.release.xcconfig"; path = "Pods/Target Support Files/Pods-BreakTime/Pods-BreakTime.release.xcconfig"; sourceTree = "<group>"; };
 		96F4D35DA5E8332DE2E71146 /* Pods_BreakTime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BreakTime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCD9886D643395EBB241E22E /* Pods-BreakTime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BreakTime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BreakTime/Pods-BreakTime.debug.xcconfig"; sourceTree = "<group>"; };
+		EB2B82221F6258DD0074EB54 /* BreakTime.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BreakTime.entitlements; sourceTree = "<group>"; };
+		EB2B82231F625B260074EB54 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		EBBE9E781F629D34002C0B21 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EBD9AF6A1F615C01008D0F79 /* Cricket.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Cricket.storyboard; sourceTree = "<group>"; };
 		EBD9AF6C1F6168ED008D0F79 /* CreateTeamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamVC.swift; sourceTree = "<group>"; };
 		EBD9AF6E1F616918008D0F79 /* JoinTeamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinTeamVC.swift; sourceTree = "<group>"; };
@@ -49,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB2B82241F625B260074EB54 /* CoreLocation.framework in Frameworks */,
 				FA7456EFA7AE26DED32F9E4A /* Pods_BreakTime.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,10 +92,12 @@
 		184373411F61237B00A1B383 /* BreakTime */ = {
 			isa = PBXGroup;
 			children = (
+				EB2B82221F6258DD0074EB54 /* BreakTime.entitlements */,
 				184373421F61237B00A1B383 /* AppDelegate.swift */,
 				184373441F61237B00A1B383 /* ViewController.swift */,
 				189AEE971F61565A0014B33E /* BTSignUPVC.swift */,
 				451297141F613CED0052F7BB /* BTHomeVC.swift */,
+				EBBE9E781F629D34002C0B21 /* BaseViewController.swift */,
 				EBD9AF6C1F6168ED008D0F79 /* CreateTeamVC.swift */,
 				EBD9AF6E1F616918008D0F79 /* JoinTeamVC.swift */,
 				EBD9AF701F616E60008D0F79 /* TeamList.swift */,
@@ -107,6 +115,7 @@
 		347A15DB0933CA960410E28C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EB2B82231F625B260074EB54 /* CoreLocation.framework */,
 				96F4D35DA5E8332DE2E71146 /* Pods_BreakTime.framework */,
 			);
 			name = Frameworks;
@@ -149,6 +158,11 @@
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = 6X82G43549;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -212,6 +226,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -221,6 +236,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -260,6 +276,7 @@
 				451297151F613CED0052F7BB /* BTHomeVC.swift in Sources */,
 				EBD9AF6F1F616918008D0F79 /* JoinTeamVC.swift in Sources */,
 				EBD9AF711F616E60008D0F79 /* TeamList.swift in Sources */,
+				EBBE9E791F629D34002C0B21 /* BaseViewController.swift in Sources */,
 				EBD9AF6D1F6168ED008D0F79 /* CreateTeamVC.swift in Sources */,
 				184373431F61237B00A1B383 /* AppDelegate.swift in Sources */,
 			);

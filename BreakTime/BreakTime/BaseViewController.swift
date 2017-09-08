@@ -37,6 +37,7 @@ class BaseViewController: UIViewController {
             print ("Error signing out: %@", signOutError)
         }
         
+        self.navigationController?.popToRootViewController(animated: false)
     }
     
     

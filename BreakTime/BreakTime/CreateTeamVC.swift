@@ -20,6 +20,7 @@ class CreateTeamVC: UIViewController,CLLocationManagerDelegate  {
     @IBOutlet weak var teamName: UITextField!
     @IBOutlet weak var teamSize: UITextField!
     @IBOutlet weak var createTeamButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var gameTitleString: String = ""
     
@@ -49,6 +50,7 @@ class CreateTeamVC: UIViewController,CLLocationManagerDelegate  {
             locationManager.startUpdatingLocation()
             var geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(locationManager.location!, completionHandler: {(placemarks, error)->Void in
+            self.activityIndicator.stopAnimating()
             self.location.text = placemarks?[0].description
         })
         

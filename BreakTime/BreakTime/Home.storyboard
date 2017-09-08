@@ -24,8 +24,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oRC-hN-aJM">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Break Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWB-qI-1Uf">
-                                        <rect key="frame" x="137.5" y="21" width="100" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Time" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWB-qI-1Uf">
+                                        <rect key="frame" x="137.5" y="27" width="100" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="LIU-VC-719"/>
                                             <constraint firstAttribute="width" constant="100" id="kea-by-Sem"/>
@@ -35,10 +35,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.82352941176470584" green="0.15686274509803921" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.85245507955551147" green="0.19139784574508667" blue="0.17837977409362793" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="24j-bT-VFS"/>
-                                    <constraint firstItem="tWB-qI-1Uf" firstAttribute="top" secondItem="oRC-hN-aJM" secondAttribute="top" constant="21" id="OTU-wh-ihY"/>
+                                    <constraint firstItem="tWB-qI-1Uf" firstAttribute="top" secondItem="oRC-hN-aJM" secondAttribute="top" constant="27" id="OTU-wh-ihY"/>
                                     <constraint firstItem="tWB-qI-1Uf" firstAttribute="centerX" secondItem="oRC-hN-aJM" secondAttribute="centerX" id="ZB2-a6-Vh1"/>
                                 </constraints>
                             </view>
@@ -60,7 +60,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="77"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KhE-ej-XBT" id="XJn-50-Q7Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="77"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="76.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -72,12 +72,12 @@
                             </tableView>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fY9-Gi-7ze">
                                 <rect key="frame" x="16" y="123" width="171" height="40"/>
-                                <color key="backgroundColor" red="0.83921568629999999" green="0.83921568629999999" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.82868021729999997" green="0.1834731996" blue="0.1850672662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="GRb-vG-wUK"/>
                                 </constraints>
                                 <state key="normal" title="Outdoor Games">
-                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="outdoorOrIndoorSelected:" destination="AWK-6q-m6W" eventType="touchUpInside" id="9Zq-gu-Yuk"/>
@@ -85,12 +85,12 @@
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fz-05-SoQ">
                                 <rect key="frame" x="188" y="123" width="171" height="40"/>
-                                <color key="backgroundColor" red="0.83921568629999999" green="0.83921568629999999" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.82868021729999997" green="0.1834731996" blue="0.1850672662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="UVW-Ud-kfS"/>
                                 </constraints>
                                 <state key="normal" title="Indoor Games">
-                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="outdoorOrIndoorSelected:" destination="AWK-6q-m6W" eventType="touchUpInside" id="Z7b-sg-Nec"/>
