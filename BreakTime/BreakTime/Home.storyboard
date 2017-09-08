@@ -42,25 +42,25 @@
                                     <constraint firstItem="tWB-qI-1Uf" firstAttribute="centerX" secondItem="oRC-hN-aJM" secondAttribute="centerX" id="ZB2-a6-Vh1"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trending Games" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1c-HW-rA3">
-                                <rect key="frame" x="123" y="72" width="130" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r1c-HW-rA3">
+                                <rect key="frame" x="245" y="72" width="130" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="0rA-DP-AUG"/>
-                                    <constraint firstAttribute="height" constant="36" id="neC-cA-KYd"/>
+                                    <constraint firstAttribute="width" constant="130" id="bBP-lw-G4t"/>
+                                    <constraint firstAttribute="height" constant="36" id="fHz-2e-22C"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="19"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7dC-OD-rBK">
-                                <rect key="frame" x="16" y="130" width="343" height="517"/>
+                                <rect key="frame" x="16" y="163" width="343" height="484"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="77" id="KhE-ej-XBT">
                                         <rect key="frame" x="0.0" y="28" width="343" height="77"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KhE-ej-XBT" id="XJn-50-Q7Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="76.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="77"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -70,27 +70,61 @@
                                     <outlet property="delegate" destination="AWK-6q-m6W" id="fcs-tf-FCM"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fY9-Gi-7ze">
+                                <rect key="frame" x="16" y="123" width="171" height="40"/>
+                                <color key="backgroundColor" red="0.83921568629999999" green="0.83921568629999999" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="GRb-vG-wUK"/>
+                                </constraints>
+                                <state key="normal" title="Outdoor Games">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="outdoorOrIndoorSelected:" destination="AWK-6q-m6W" eventType="touchUpInside" id="9Zq-gu-Yuk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fz-05-SoQ">
+                                <rect key="frame" x="188" y="123" width="171" height="40"/>
+                                <color key="backgroundColor" red="0.83921568629999999" green="0.83921568629999999" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="UVW-Ud-kfS"/>
+                                </constraints>
+                                <state key="normal" title="Indoor Games">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.0" blue="0.25098040700000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="outdoorOrIndoorSelected:" destination="AWK-6q-m6W" eventType="touchUpInside" id="Z7b-sg-Nec"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="r1c-HW-rA3" firstAttribute="centerX" secondItem="2hf-aV-6xM" secondAttribute="centerX" id="2lo-nW-cNI"/>
+                            <constraint firstItem="7dC-OD-rBK" firstAttribute="leading" secondItem="2hf-aV-6xM" secondAttribute="leading" constant="16" id="1B8-WL-3Hc"/>
+                            <constraint firstAttribute="trailing" secondItem="7dC-OD-rBK" secondAttribute="trailing" constant="16" id="422-a0-fb5"/>
+                            <constraint firstItem="fY9-Gi-7ze" firstAttribute="leading" secondItem="2hf-aV-6xM" secondAttribute="leading" constant="16" id="7SA-RN-JpG"/>
+                            <constraint firstItem="5fz-05-SoQ" firstAttribute="top" secondItem="r1c-HW-rA3" secondAttribute="bottom" constant="15" id="7VO-wy-0rb"/>
                             <constraint firstItem="oRC-hN-aJM" firstAttribute="leading" secondItem="2hf-aV-6xM" secondAttribute="leading" id="8NV-68-VIf"/>
+                            <constraint firstItem="r1c-HW-rA3" firstAttribute="top" secondItem="oRC-hN-aJM" secondAttribute="bottom" constant="8" id="9iA-Tg-emh"/>
                             <constraint firstItem="oRC-hN-aJM" firstAttribute="top" secondItem="2hf-aV-6xM" secondAttribute="top" id="Cu7-om-qVr"/>
-                            <constraint firstItem="7dC-OD-rBK" firstAttribute="top" secondItem="r1c-HW-rA3" secondAttribute="bottom" constant="22" id="VFH-5M-ugq"/>
-                            <constraint firstItem="7dC-OD-rBK" firstAttribute="leading" secondItem="2hf-aV-6xM" secondAttribute="leading" constant="16" id="cRs-2y-HXY"/>
-                            <constraint firstAttribute="trailing" secondItem="7dC-OD-rBK" secondAttribute="trailing" constant="16" id="cr6-jt-0Pg"/>
-                            <constraint firstItem="r1c-HW-rA3" firstAttribute="top" secondItem="oRC-hN-aJM" secondAttribute="bottom" constant="8" id="fVw-he-j6A"/>
-                            <constraint firstItem="4nZ-wy-Wxz" firstAttribute="top" secondItem="7dC-OD-rBK" secondAttribute="bottom" constant="20" id="gqd-bV-vqX"/>
+                            <constraint firstItem="4nZ-wy-Wxz" firstAttribute="top" secondItem="7dC-OD-rBK" secondAttribute="bottom" constant="20" id="Jdk-QE-glR"/>
+                            <constraint firstItem="fY9-Gi-7ze" firstAttribute="top" secondItem="oRC-hN-aJM" secondAttribute="bottom" constant="59" id="LEI-XA-I07"/>
+                            <constraint firstItem="5fz-05-SoQ" firstAttribute="width" secondItem="fY9-Gi-7ze" secondAttribute="width" id="VY1-QR-Q59"/>
+                            <constraint firstAttribute="trailing" secondItem="5fz-05-SoQ" secondAttribute="trailing" constant="16" id="Vn5-lJ-29Z"/>
+                            <constraint firstItem="5fz-05-SoQ" firstAttribute="leading" secondItem="fY9-Gi-7ze" secondAttribute="trailing" constant="1" id="XrC-Wx-kzd"/>
+                            <constraint firstAttribute="trailing" secondItem="r1c-HW-rA3" secondAttribute="trailing" id="rAc-gE-Rav"/>
+                            <constraint firstItem="7dC-OD-rBK" firstAttribute="top" secondItem="5fz-05-SoQ" secondAttribute="bottom" id="wH8-Q5-TDd"/>
                             <constraint firstAttribute="trailing" secondItem="oRC-hN-aJM" secondAttribute="trailing" id="wJb-le-pdq"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="indoorGamesButton" destination="5fz-05-SoQ" id="M2t-DL-YQ1"/>
+                        <outlet property="outdoorGamesButton" destination="fY9-Gi-7ze" id="aFb-sB-yVz"/>
                         <outlet property="tableView" destination="7dC-OD-rBK" id="41M-Q0-6Kg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m4h-uM-r6f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-258.39999999999998" y="-90.404797601199405"/>
+            <point key="canvasLocation" x="-938.39999999999998" y="-122.78860569715144"/>
         </scene>
     </scenes>
 </document>

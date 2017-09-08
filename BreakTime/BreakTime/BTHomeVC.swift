@@ -9,77 +9,64 @@
 import Foundation
 import UIKit
 
-class BTHomeVC: UIViewController , UITableViewDelegate, UITableViewDataSource {
+class BTHomeVC: BaseViewController , UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var indoorGamesButton: UIButton!
+    @IBOutlet weak var outdoorGamesButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var sectionHeadingsArray : [String] = ["Outdoor Games", "Indoor Games"]
     var sectionIndoor : [String] = ["Carroms", "Chess", "Snakes & Laders","Asta-Chemma"]
     var sectionOutdoor : [String] = ["Cricket","Volley Ball","Foot Ball","Badminton"]
     var selectedGame : String = ""
-
+    var selectedArray : [String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let fView = UIView()
         tableView.tableFooterView = fView
+        selectedArray = sectionOutdoor
+        outdoorGamesButton.backgroundColor = UIColor.red
+        indoorGamesButton.backgroundColor = UIColor.lightGray
+        
+
     }
     
     
+    @IBAction func outdoorOrIndoorSelected(_ sender: Any) {
+        if (sender as! UIButton).tag == 1 {
+            outdoorGamesButton.backgroundColor = UIColor.red
+            indoorGamesButton.backgroundColor = UIColor.lightGray
+            selectedArray = sectionOutdoor
+            tableView.reloadData()
+        } else {
+            outdoorGamesButton.backgroundColor = UIColor.lightGray
+            indoorGamesButton.backgroundColor = UIColor.red
+            selectedArray = sectionIndoor
+            tableView.reloadData()
+        }
+    }
     
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return sectionOutdoor.count
-        } else {
-            return sectionIndoor.count
-        }
+            return selectedArray.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2;
+        return 1;
     }
     
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let viewHeader = UIView()
-        viewHeader.backgroundColor = UIColor.red
-        //        viewHeader.layer.opacity = 0.5
-        
-        let headerTitle = UILabel()
-        headerTitle.frame = CGRect(x: 15 , y: 3, width: tableView.frame.width, height: 30)
-        let title = sectionHeadingsArray[section]
-        headerTitle.text = title.capitalized
-        headerTitle.textAlignment = .left
-        headerTitle.font = UIFont(name: "Gill Sans - Regular", size: 17)
-        headerTitle.textColor = UIColor.white
-        viewHeader.addSubview(headerTitle)
-        return viewHeader
-    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
-        if indexPath.section == 0 {
-            cell.textLabel?.text = sectionOutdoor[indexPath.row]
-        } else {
-            cell.textLabel?.text = sectionIndoor[indexPath.row]
-        }
+
+        cell.textLabel?.text = selectedArray[indexPath.row]
         cell.selectionStyle = .none
       return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        if indexPath.section == 0 {
-            selectedGame = sectionOutdoor[indexPath.row]
-        } else {
-            selectedGame = sectionIndoor[indexPath.row]
-        }
-        
+        selectedGame = selectedArray[indexPath.row]
         showAlertView( title: "\(selectedGame)", controller: self)
     }
     
