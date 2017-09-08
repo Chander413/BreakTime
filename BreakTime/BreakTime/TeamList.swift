@@ -17,7 +17,7 @@ class TeamList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var teamName: String = ""
     var teamSize: Int = 0
     var joinedMembers: Int = 1
-    var users: [String] = ["You"]
+    var users: [[String : String]] = Array()
     var selUid : String = ""
     @IBOutlet weak var gameTitle: UILabel!
     @IBOutlet weak var teamNameLabel: UILabel!
@@ -27,12 +27,15 @@ class TeamList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getSelectedTeamDetails()
 //        gameTitle.text = gameName
 //        teamNameLabel.text = teamName
 //        teamSizeCount.text = "\(joinedMembers)/\(teamSize)"
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getSelectedTeamDetails()
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,7 +43,10 @@ class TeamList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "teamsCell", for: indexPath) as! usersCell
-        cell.userNameLabel.text = users[indexPath.row]
+        let user = users[indexPath.row]
+        
+        cell.userNameLabel.text = user["name"]
+        cell.mobileNumberLBL.text = user["mobile"]
         return cell
         
     }
@@ -54,10 +60,7 @@ class TeamList: UIViewController, UITableViewDelegate, UITableViewDataSource {
         ref.child("CreateTeam").observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
             // Get user value
             let value = snapshot.value as? NSDictionary
-            
-            //            let messages = value?.allValues.filter({ (messageDict) -> Bool in
-            //                return true
-            //            })
+
             if (value?.allKeys.count)! > 0{
                 print(value as Any)
                 var data : [String : Any] = Dictionary()
@@ -65,11 +68,15 @@ class TeamList: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     data = value?.value(forKey: self.selUid) as! [String : Any]
                     self.gameTitle.text = data["gameTitle"] as? String
                     self.teamNameLabel.text = data["teamName"] as? String
-                    let teamMembers = data["teamMembers"] as! [[String : String]]
-                    self.teamSizeCount.text = "\(teamMembers.count)/\(data["teamSize"] as! String)"
+                    if data["teamMembers"] != nil {
+                        let teamMembers = data["teamMembers"] as! [[String : String]]
+                        self.users = teamMembers
+                    }
+                    self.teamSizeCount.text = "\(self.users.count)/\(data["teamSize"] as! String)"
+                    
                 }
             }
-            //self.tableView.reloadData()
+            self.usersTableView.reloadData()
             
             // ...
         }) { (error) in
@@ -80,7 +87,21 @@ class TeamList: UIViewController, UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func leaveTeamButtonAction(_ sender: Any) {
-    
+        let defaults = UserDefaults.standard
+        let details = defaults.value(forKey: "userDetails") as! Dictionary<String, String>
+        let mobileNumber = details["mobileNumber"]!
+        var count = 0
+        
+        for user in self.users{
+            if user["mobile"] == mobileNumber{
+                self.users.remove(at: count)
+                count -= 1
+            }
+            count += 1
+        }
+        
+        Database.database().reference().root.child("CreateTeam").child(selUid).updateChildValues(["teamMembers": self.users])
+        getSelectedTeamDetails()
     }
 
 }

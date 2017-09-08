@@ -51,7 +51,8 @@ class CreateTeamVC: UIViewController,CLLocationManagerDelegate  {
             var geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(locationManager.location!, completionHandler: {(placemarks, error)->Void in
             self.activityIndicator.stopAnimating()
-            self.location.text = placemarks?[0].description
+            self.location.text = placemarks?[0].name
+            print("Location: \(placemarks!)")
         })
         
     }
@@ -68,7 +69,7 @@ class CreateTeamVC: UIViewController,CLLocationManagerDelegate  {
             let details = defaults.value(forKey: "userDetails") as! Dictionary<String, String>
             let userName = details["userName"]!
             let mobileNumber = details["mobileNumber"]!
-            let dataDict : [String : Any] = ["gameTitle" : gameTitle.text!, "teamName" : teamName.text!, "teamSize" : teamSize.text!, "creatorName" : userName, "location" : "Madhapur", "time" : "12:00 PM", "teamMembers" : [["name" : userName, "mobile" : mobileNumber]]]
+            let dataDict : [String : Any] = ["gameTitle" : gameTitle.text!, "teamName" : teamName.text!, "teamSize" : teamSize.text!, "creatorName" : userName, "location" : location.text!, "time" : "12:00 PM", "teamMembers" : [["name" : userName, "mobile" : mobileNumber]]]
             
             let formDataRef = ref.child("CreateTeam")
             //formDataRef.childByAutoId().setValue(dataDict)

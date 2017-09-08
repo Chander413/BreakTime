@@ -24,15 +24,17 @@ class JoinTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet var tableView: UITableView!
     var teamArray : [[String : Any]] = Array()
     var keysArray : [String] = Array()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        getTeamsList()
         gameTitle.text = gameTitleString
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         updateLocation()
+        getTeamsList()
     }
+    
     func updateLocation() {
         self.locationManager.requestAlwaysAuthorization()
         
@@ -48,9 +50,10 @@ class JoinTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         var geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(locationManager.location!, completionHandler: {(placemarks, error)->Void in
             self.activityIndicator.stopAnimating()
-            self.location.text = placemarks?[0].description
+            self.location.text = placemarks?[0].name
+            print("Location: \(placemarks)")
         })
-        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -66,10 +69,32 @@ class JoinTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let cell:BTTeamCell = tableView.dequeueReusableCell(withIdentifier: "teamsCell")! as! BTTeamCell
         let team = teamArray[indexPath.row]
         cell.teamNameLBL.text = team["teamName"] as? String
-        let teamMembers = team["teamMembers"] as! [[String : String]]
+        var teamMembers : [[String : String]] = Array()
+        if team["teamMembers"] != nil {
+            teamMembers = team["teamMembers"] as! [[String : String]]
+        }
         cell.numberOfTeamLBL.text = "\(teamMembers.count)/\(team["teamSize"] as! String)"
         cell.joinButton.tag = indexPath.row
+        cell.inProgressLBL.text = team["location"] as? String
         cell.joinButton.addTarget(self, action: #selector(joinClicked), for: .touchUpInside)
+        
+        var userNumbers : [String] = Array()
+        for user in teamMembers{
+            userNumbers.append(user["mobile"]!)
+        }
+        
+        let defaults = UserDefaults.standard
+        let details = defaults.value(forKey: "userDetails") as! Dictionary<String, String>
+        let mobileNumber = details["mobileNumber"]!
+        
+        if userNumbers.contains(mobileNumber){
+            cell.joinButton.setTitle("Joined", for: .normal)
+            cell.joinButton.isUserInteractionEnabled = false
+        }
+        else{
+            cell.joinButton.setTitle("Join", for: .normal)
+            cell.joinButton.isUserInteractionEnabled = true
+        }
         
         return cell
     }
@@ -90,12 +115,19 @@ class JoinTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             
             if (value?.allKeys.count)! > 0{
                 print(value as Any)
-                self.keysArray = value?.allKeys as! [String]
+                //self.keysArray = value?.allKeys as! [String]
                 let teams = value?.allValues as! [[String : Any]]
+                let keys = value?.allKeys as! [String]
+                self.teamArray.removeAll()
+                self.keysArray.removeAll()
+                var count = 0
                 for team in teams {
                     if team["gameTitle"] as! String == self.gameTitleString {
                         self.teamArray.append(team)
+                        self.keysArray.append(keys[count])
                     }
+                    
+                    count += 1
                 }
             }
             self.tableView.reloadData()
@@ -104,8 +136,18 @@ class JoinTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
-    func joinClicked() {
-        
+    @IBAction func joinClicked(_ sender: UIButton) {
+        let team = teamArray[sender.tag]
+        var teamMembers = team["teamMembers"] as! [[String : String]]
+        let defaults = UserDefaults.standard
+        let details = defaults.value(forKey: "userDetails") as! Dictionary<String, String>
+        let userName = details["userName"]!
+        let mobileNumber = details["mobileNumber"]!
+        let user = ["name" : userName, "mobile" : mobileNumber]
+        teamMembers.append(user)
+        let uid = keysArray[sender.tag]
+        Database.database().reference().root.child("CreateTeam").child(uid).updateChildValues(["teamMembers": teamMembers])
+        getTeamsList()
     }
     
     @IBAction func backButtonAction(_ sender: Any) {
